@@ -48,6 +48,7 @@ Blockly.Arduino['leaphy_serial_print_value'] = function(block) {
     Blockly.Arduino.addSetup('serial', 'Serial.begin(115200);', false);
     var name = Blockly.Arduino.valueToCode(this, 'NAME', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var value = Blockly.Arduino.valueToCode(this, 'VALUE', Blockly.Arduino.ORDER_ATOMIC) || '0';
-    var code = 'Serial.print(' + name + '); Serial.print(" = "); Serial.println(' + value + ');\n';
+    var statement = name.slice(0,name.length - 1) + ' = " + ' + value;
+    var code = 'Serial.println(' + statement + ');\n';
     return code;
 };
